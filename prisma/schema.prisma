@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Device {
+  id             String    @id @default(uuid())
+  phoneNumber    String    @unique
+  token          String    @unique
+  createdAt      DateTime  @default(now())
+  messages       Message[]
+  
+  @@index([token])
+  @@index([phoneNumber])
+}
+
+model Message {
+  id          String   @id @default(uuid())
+  deviceId    String
+  device      Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  fromNumber  String
+  body        String
+  receivedAt  DateTime @default(now())
+  isRead      Boolean  @default(false)
+  
+  @@index([deviceId])
+}

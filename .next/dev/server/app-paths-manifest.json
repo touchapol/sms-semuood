@@ -1,0 +1,8 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/device/new/route": "app/api/device/new/route.js",
+  "/api/messages/mark-read/route": "app/api/messages/mark-read/route.js",
+  "/api/messages/route": "app/api/messages/route.js",
+  "/api/sms/send/route": "app/api/sms/send/route.js",
+  "/page": "app/page.js"
+}
